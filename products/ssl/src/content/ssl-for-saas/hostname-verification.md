@@ -6,8 +6,6 @@ order: 4
 
 Cloudflare verifies ownership of each new hostname before traffic is allowed to proxy.   There are three methods to verify ownership: TXT record, HTTP token or CNAME.
 
---------
-
 ## CNAME
 
 ### Full setup
@@ -33,8 +31,7 @@ To prevent unresolvable CNAME loops, only 10 consecutive CNAMES are followed to 
 
 For verification, the account that owns the custom hostname must also own all A and AAAA records for the apex.  To verify ownership, the IP returned for the hostname must reside in the IP prefix allocated to the account.
 
-The few seconds Cloudflare requires to iterate over the CNAME can cause a slight downtime.  This is likely acceptable for CNAME verification of Custom Hostnames for staging or development sites. However, Cloudflare recommends verification of Custom Hostnames via TXT record or HTTP token for live production traffic.  When TXT or HTTP verification completes and the Custom Hostname shows __Active__ in the Cloudflare __SSL/TLS__ app under the __Custom Hostnames__ tab, inform your customer to CNAME traffic to Cloudflare. 
-
+The few seconds Cloudflare requires to iterate over the CNAME can cause a slight downtime.  This is likely acceptable for CNAME verification of Custom Hostnames for staging or development sites. However, Cloudflare recommends verification of Custom Hostnames via TXT record or HTTP token for live production traffic.  When TXT or HTTP verification completes and the Custom Hostname shows __Active__ in the Cloudflare __SSL/TLS__ app under the __Custom Hostnames__ tab, inform your customer to CNAME traffic to Cloudflare.
 
 ### TXT
 
@@ -88,30 +85,32 @@ Cloudflare sends GET requests to the *http_url* using *User-Agent: Cloudflare Cu
 Various hostname verification errors include:
 
 <TableWrap>
-<table>
+<table style='table-layout:fixed; width:100%'>
 <thead>
+<tr>
 <th>Error Message</th>
 <th>Cause</th>
+</tr>
 </thead>
 <tbody>
 <tr>
-<td>Zone does not have a fallback origin set</td>
+<td style='width:50%; word-wrap:break-word; white-space:normal'>Zone does not have a fallback origin set</td>
 <td>Fallback is not active</td>
 </tr>
 <tr>
-<td>Fallback origin is initializing, pending_deployment, pending_deletion, or deleted</td>
+<td style='width:50%; word-wrap:break-word; white-space:normal'>Fallback origin is initializing, pending_deployment, pending_deletion, or deleted</td>
 <td>Fallback is not active</td>
 </tr>
 <tr>
-<td>Custom hostname does not CNAME to this zone</td>
+<td style='width:50%; word-wrap:break-word; white-space:normal'>Custom hostname does not CNAME to this zone</td>
 <td>Zone does not have apex proxying entitlement and custom hostname doesn’t CNAME to zone</td>
 </tr>
 <tr>
-<td>None of the A or AAAA records are owned by</td>
+<td style='width:50%; word-wrap:break-word; white-space:normal'>None of the A or AAAA records are owned by</td>
 <td>Account has apex proxying enabled but custom</td>
 </tr>
 <tr>
-<td>This account and the pre-generated ownership verification token was not found</td>
+<td style='width:50%; word-wrap:break-word; white-space:normal'>This account and the pre-generated ownership verification token was not found</td>
 <td>Hostname doesn’t CNAME to zone or none of the A/AAAA records match reserved IPs for zone</td>
 </tr>
 </tbody>
@@ -123,8 +122,10 @@ Applicable hostname verification status includes:
 <TableWrap>
 <table>
 <thead>
+<tr>
 <th>Verification Status Messages</th>
 <th>Description</th>
+</tr>
 </thead>
 <tbody>
 <tr>
